@@ -9,8 +9,9 @@
 #
 # Purpose : This script will build an inventory of all GPOs and their links.
 #
-# Requirements: A computer with Active Directory Admin Center (ADAC) installed and a 
-#               user account with enough privileges 
+# Requirements: Computer running the script must have the ActiveDirectory, GroupPolicy, and Visio modules installed.
+#               ActiveDirectory and GroupPolicy modules can be installed via the RSAT installer or via Add Windows Features.
+#               Visio module can be installed via the PS Gallery, using the command "Install-Module -Name Visio"
 #             
 # Change Log: Ver 1.0    - Initial release
 #             Ver 1.1    - Fixed Visio Cmdlet Parameters,
@@ -23,35 +24,10 @@
 #
 #############################################################################
 
+
+#Requires -Modules ActiveDirectory, GroupPolicy, Visio
 Clear-Host
 Write-Output "Starting up..."
-
-
-#Import the modules
-Try {
-    Write-Output "Importing the required modules"
-    Import-Module ActiveDirectory -ErrorAction Stop
-    Import-Module GroupPolicy -ErrorAction Stop
-    Import-Module Visio -ErrorAction Stop
-}
-Catch {
-    Write-Error "Error importing the required modules"
-    if($Error[0].Exception.Message -like "*ActiveDirectory*") {
-        Write-Error "Unable to import the ActiveDirectory module. Please ensure you have RSAT installed"
-        Read-Host "Press any key to exit"
-        exit
-    }
-    if($Error[0].Exception.Message -like "*GroupPolicy*") {
-        Write-Error "Unable to import the GroupPolicy module. Please ensure you have RSAT installed"
-        Read-Host "Press any key to exit"
-        exit
-    }
-    if($Error[0].Exception.Message -like "*Visio*") {
-        Write-Error "Unable to import the Visio module. Please ensure you have the Visio module installed"
-        Read-Host "Press any key to exit"
-        exit
-    }
-}
 
 ################################################################
 # Adjust the following variables to suit your environment
