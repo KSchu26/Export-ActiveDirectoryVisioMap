@@ -1,28 +1,31 @@
 #############################################################################
-# Author  : Tyler Cox
 # Editor  : Kyle Schuler
+# Version : 1.3.1
+# Modified : 09/09/2024
 #
-# Version : 1.3
+#
+# Original Author  : Tyler Cox
 # Created : 11/2/2021
-# Modified : 09/04/2024
 #
 # Purpose : This script will build an inventory of all GPOs and their links.
 #
 # Requirements: A computer with Active Directory Admin Center (ADAC) installed and a 
 #               user account with enough privileges 
 #             
-# Change Log: Ver 1.0 - Initial release
-#             Ver 1.1 - Fixed Visio Cmdlet Parameters,
-#                     - Adjusted for Azure AD joined devices
-#                     - Fixed issue with importing Visio module
-#                     - Reduced output to console
-#             Ver 1.2 - Added more error handling and output, refactored, reformatted
-#             Ver 1.3 - Added options for user to include or exclude GPOs, and choose the direction of the layout
+# Change Log: Ver 1.0    - Initial release
+#             Ver 1.1    - Fixed Visio Cmdlet Parameters,
+#                        - Adjusted for Azure AD joined devices
+#                        - Fixed issue with importing Visio module
+#                        - Reduced output to console
+#             Ver 1.2    - Added more error handling and output, refactored, reformatted
+#             Ver 1.3    - Added options for user to include or exclude GPOs, and choose the direction of the layout
+#             Ver 1.3.1a - (WIP) Refactoring again and code cleanup
 #
 #############################################################################
 
 Clear-Host
 Write-Output "Starting up..."
+
 
 #Import the modules
 Try {
