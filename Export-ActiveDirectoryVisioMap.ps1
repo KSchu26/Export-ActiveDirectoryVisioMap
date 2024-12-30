@@ -24,24 +24,24 @@
 #
 #############################################################################
 
-
-#Requires -Modules ActiveDirectory, GroupPolicy, Visio
-Clear-Host
-Write-Output "Starting up..."
-
 ################################################################
 # Adjust the following variables to suit your environment
 # Set up options
 $IncludeGPOs = $true
 $LayoutDirection = "TopToBottom"
+$SkipInput = $false
 ################################################################
 
 
+#Requires -Modules ActiveDirectory, GroupPolicy, @{ModuleName="Visio"; ModuleVersion="4.5.1"}
 
+
+Clear-Host
+Write-Output "Starting up..."
 
 
 # Get user input
-do{
+if(!$SkipInput){ do{
     if($IncludeGPOs){ $IncludeGPOsInput = "Y" }
     else { $IncludeGPOsInput = "N" }
     Write-Output ""
@@ -50,7 +50,7 @@ do{
     if($IncludeGPOsInput.ToUpper() -eq "Y") { $IncludeGPOs = $true; break }
     elseif($IncludeGPOsInput.ToUpper() -eq "N") { $IncludeGPOs = $false; break }
     else { Write-Output "Invalid input. Please try again." }
-} while($true)
+} while($true) }
 
 do{
     if($LayoutDirection -eq "TopToBottom") { $LayoutDirectionInput = "1" }
